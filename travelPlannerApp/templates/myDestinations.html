@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <a href="/userWelcomePage">Home</a>
+    <a href="/logOut">log out</a>
+    
+    <h1>{{trip.destination}}</h1>
+    <p>Planned by: {{trip.creator.name}}</p>
+    <p>Description: {{trip.description}}</p>
+    <p>Trip starts on: {{trip.startdate}}</p>
+    <p>Trip ends on: {{trip.enddate}}</p>
+
+    <h3>People who joined the trip:</h3>
+{{trip.wisher.all}}
+    <ul>
+        {% for user in trip.wisher.all %}
+        <li>{{user.name}}</li>
+        {% endfor %}
+    </ul>
+
+
+
+
+
+</body>
+
+
+</html>

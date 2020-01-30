@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add a Wish</title>
+</head>
+<body>
+
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>
+            {{message}}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <a href="/userWelcomePage">Home</a>
+    <a href="/logOut">log out</a>
+    
+
+    <h1>Create a new User</h1>
+    <form action="/destinationValidation" method="post">
+        {% csrf_token %}
+        <p>Make a trip to: <input type="text" name="destination" id=""></p>
+        <p>Trip description: <input type="text" name="description" id=""></p>
+        <p>Travel Date From: <input type="date" name="stdate" id="" min="{{date}}"></p>
+        <p>Travel Date To: <input type="date" name="endate" id="" min="{{date}}"></p>
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>

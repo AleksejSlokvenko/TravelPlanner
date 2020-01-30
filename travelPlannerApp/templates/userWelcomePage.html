@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome {{loggedInUser.Name}}</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+
+    <h1>Welcome {{loggedInUser.name}} !</h1>
+    
+    <a href="/logOut">Log Out</a>
+    <a href="/destination/create">Add a Trip</a><br>
+
+
+    <h3>Your Trips:</h3>
+    <table>
+        <tr>
+          <th>Destination</th>
+          <th>Start Date</th>
+          <th>End date</th>
+          <th>Description</th>
+        </tr>
+        {% for trip in myTrips %}
+        <tr>
+            <td><a href="/myDestinations/{{trip.id}}">{{trip.destination}}</a></td>
+          <td>{{trip.startdate}}</td>
+          <td>{{trip.enddate}}</td>
+          <td>{{trip.description}}</td>
+          
+        </tr>
+        {% endfor %}
+      </table>
+
+      <h3>Other User's Trips:</h3>
+      <table>
+        <tr>
+           <th>Added by</th>
+           <th>Destination</th>
+            <th>Start Date</th>
+            <th>End date</th>
+            <th>Join the Trip</th>
+        </tr>
+        {% for trip in otherTrips %}
+        <tr>
+            
+            <td>{{trip.creator.name}}</td>
+            <td><a href="/myDestinations/{{trip.id}}">{{trip.destination}}</a></td>
+            <td>{{trip.startdate}}</td>
+            <td>{{trip.enddate}}</td>
+            <td><a href="/addToMyTrip/{{trip.id}}">Add to my Trips</a></td>
+
+            
+        </tr>
+        {% endfor %}
+      </table>
+</body>
+</html>
